@@ -1,0 +1,41 @@
+<div id="map" style="width:600px;height:600px"></div>
+
+<div id="myId">
+
+
+    <mat-toolbar color="primary">
+        <span *ngIf="tasks.length>0; else elseBlock">number of addresses: {{tasks.length}}</span>
+        <ng-template #elseBlock>
+            <span>number of addresses 0</span>
+
+        </ng-template>
+    </mat-toolbar>
+
+
+    <div class="wrapper">
+
+        <div class="content">
+            <mat-card class="task-add">
+                <form [formGroup]="form" (ngSubmit)="addAddress()" novalidate>
+                    <mat-form-field>
+                        <input matInput formControlName="task" placeholder="write the address">
+                        <mat-error>This field is mandatory</mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button color='primary'>add</button>
+                </form>
+            </mat-card>
+            <div class="task-list" *ngFor="let task of tasks; let i = index">
+                <mat-card class="task-item">
+                    <span>{{task}}</span>
+
+                    <button mat-icon-button (click)="deletAddress(i)" color="warn">
+
+                <mat-icon>clear</mat-icon>
+
+              </button>
+
+
+                </mat-card>
+            </div>
+        </div>
+    </div>
