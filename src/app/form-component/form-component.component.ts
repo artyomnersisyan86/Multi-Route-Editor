@@ -49,7 +49,10 @@ export class FormComponentComponent implements OnInit {
 
   //add addresses!
   addAddress(task: string) {
+    if(this.form.value.task === null){
+      return alert('enter your adress');
 
+    }
       this.tasks.push(this.form.value.task);
     this.form.reset();
     console.log(this.tasks);
@@ -86,7 +89,13 @@ export class FormComponentComponent implements OnInit {
 
   updateRoute() {
     this.multiRoute.model.setReferencePoints(this.tasks);
-    this.map.options.set('mapStateAutoApply', true);
+    //this.map.options.set('mapStateAutoApply', true);
+    this.map.setZoom(4, {duration: 1000,
+      checkZoomRange :true,
+      zoomMargin: 35,
+
+      smooth: true,
+    });
   }
 
 
