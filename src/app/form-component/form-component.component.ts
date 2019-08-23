@@ -38,19 +38,16 @@ export class FormComponentComponent implements OnInit {
         reverseGeocoding: true,
         viaPointDraggable: true,
 
-
       });
-
 
       this.renderRoute();
     });
 
   }
-
   //add addresses!
   addAddress(task: string) {
     if(this.form.value.task === null){
-      return alert('enter your adress');
+      return alert('you did not write the address !');
 
     }
       this.tasks.push(this.form.value.task);
@@ -58,20 +55,13 @@ export class FormComponentComponent implements OnInit {
     console.log(this.tasks);
     this.updateRoute();
 
-
-
-
-
-
   }
-
   //address deletion!
   deletAddress(index: number){
     this.tasks.splice(index, 1)
     this.updateRoute();
   }
-
-  renderRoute() {
+ renderRoute() {
     // Add the route to the map.
     this.map.geoObjects.add(this.multiRoute);
     //Enable editing mode and configure settings
